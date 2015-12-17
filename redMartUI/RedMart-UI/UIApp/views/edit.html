@@ -1,0 +1,141 @@
+<html>
+    <body>
+        <head>
+            <center>
+                <h1>
+                    <bold>
+                        <center>Customer Complaint Logging tool</center>
+                    </bold>
+                </h1>
+            </center>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
+            <script src="../js/mockApi.js"></script>
+            <script src="../js/edit.js"></script>
+            <link rel="stylesheet" href="../css/style.css">
+        </head>
+        <div class="center-alignment">
+            <br>
+
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation">
+                    <a href="view.html">View ticket</a>
+                </li>
+                <li role="presentation" >
+                    <a href="create.html">Create ticket</a>
+                </li>
+                <li role="presentation" class="active">
+                    <a href="edit.html">Edit ticket</a>
+                </li>
+            </ul>
+
+            <!-- <div class="form-group required-field-block">
+                 <div class="col-md-12 input-group">
+                     <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                     <textarea rows="1" size="30" value="" class="form-control" placeholder="Please enter Ticket Number" name="tick"></textarea>
+
+                     <div class="required-icon">
+                     </div>
+                 </div>
+             </div>-->
+
+            <div class="input-group" style="margin-top: 50px;">
+                <input type="text" class="form-control" placeholder="Enter the Ticket Number" id="ticketNumber" required>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" id="submit">Go!</button>
+                </span>
+            </div>
+
+            <div class="panel panel-primary" style="margin-top: 50px;">
+                <div class="panel-heading">Please fill the following to create a ticket</div>
+                <div class="panel-body">
+
+                    <form id="formGrp" onsubmit="return callEditCustomerReportApi()">
+                        <div class="form-group">
+                            <label>Customer Name:</label>
+                            <input class="form-control" id="name" placeholder="Enter name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Customer Comments:</label>
+                            <textarea class="form-control" id="comment" placeholder="Comments..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Assign to:</label>
+                            <select class="form-control" id="assignee" required>
+                                <option selected value="">Select any</option>
+                                <option value="Naveena">Naveena</option>
+                                <option value="Anu">Anu</option>
+                                <option value="Ram">Ram</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Created by:</label>
+                            <select class="form-control" id="created" required>
+                                <option selected value="">Select any</option>
+                                <option value="Kumar">Kumar</option>
+                                <option value="Krishna">Krishna</option>
+                                <option value="Suresh">Suresh</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Area:</label>
+                            <select class="form-control" id="area" required>
+                                <option selected value="">Select any</option>
+                                <option value="Support">Support</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Status:</label>
+                            <select class="form-control" id="status" required>
+                                <option selected value="">Select any</option>
+                                <option value="Created">Created</option>
+                                <option value="Open">Open</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                        </div>
+
+                        <button type="submit"  id="submitBtn" class="btn btn-default">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal fade bs-example-modal-sm" id="errorModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Error!!!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please enter a valid id</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade bs-example-modal-sm" id="savedInfoModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Yay!!!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Changes saved</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
